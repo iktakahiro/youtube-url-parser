@@ -5,6 +5,7 @@ import { stringify, parse } from "qs"
 
 const validHost = /^(www.youtube.com|youtu.be)$/
 const validPathname = /^.*\/([a-zA-Z0-9_-]{11})$/
+const validId = /^([a-zA-Z0-9_-]{11})$/
 const validStartAt = /^((\d{1,2})h)?((\d{1,2})m)?((\d{1,2})s)?$/
 
 export class YouTubeURLParser {
@@ -40,7 +41,7 @@ export class YouTubeURLParser {
         const query = parse(this.parsedURL.search, { ignoreQueryPrefix: true })
         this.id = (validPathname.exec(this.parsedURL.pathname) || [])[1] || null
         if (this.id === null) {
-            this.id = query["v"] || null
+            this.id = (validId.exec(query["v"]) || [])[1] || null
         }
         delete query["watch"]
         this.search = stringify(query, { addQueryPrefix: false })

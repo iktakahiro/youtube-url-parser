@@ -82,3 +82,33 @@ describe("invalid URL 1", () => {
         expect(result).to.equal(null)
     })
 })
+
+describe("invalid params 1", () => {
+
+    const parser = new YouTubeURLParser("https://youtu.be/7lmCu8wz8ro?hoge=console.log(123)")
+
+    it("should return true", () => {
+        const result = parser.isValid()
+        expect(result).to.equal(true)
+    })
+
+    it("should return valid id", () => {
+        const result = parser.getShortURL()
+        expect(result).to.equal("https://youtu.be/7lmCu8wz8ro?hoge=console.log%28123%29")
+    })
+})
+
+describe("invalid params 2", () => {
+
+    const parser = new YouTubeURLParser("https://youtu.be/watch?v=console.log(123)")
+
+    it("should return true", () => {
+        const result = parser.isValid()
+        expect(result).to.equal(false)
+    })
+
+    it("should return valid id", () => {
+        const result = parser.getId()
+        expect(result).to.equal(null)
+    })
+})
