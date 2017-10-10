@@ -1,7 +1,7 @@
 {
-    "name": "youtube-url-parser",
+    "name": "@iktakahiro/youtube-url-parser",
     "version": "0.9.0",
-    "description": "Parser for Youtube URL",
+    "description": "Parser for YouTube URL",
     "main": "./lib/index.js",
     "types": "./lib/index.d.ts",
     "scripts": {
@@ -34,5 +34,8 @@
     "dependencies": {
         "@types/qs": "^6.5.0",
         "qs": "^6.5.1"
+    },
+    "directories": {
+        "lib": "lib"
     }
 }

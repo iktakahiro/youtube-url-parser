@@ -5,7 +5,7 @@
 ## Install
 
 ```bash
-npm install youtube-url-parser
+npm install @iktakahiro/youtube-url-parser
 ```
 
 ## Test
