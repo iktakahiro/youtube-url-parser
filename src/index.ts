@@ -1,22 +1,7 @@
+import { StartAt, ParserOptions } from "./../lib/index.d"
+
 import { URL } from "url"
 import { stringify, parse } from "qs"
-
-interface ParserOptions {
-    iframe?: {
-        allowFullScreen?: boolean
-        frameBorder?: number
-        responsive?: boolean
-        noCookie?: boolean,
-        width?: number,
-        height?: number,
-    }
-}
-
-interface StartAt {
-    hour: number
-    minute: number
-    second: number
-}
 
 const validHost = /^(www.youtube.com|youtu.be)$/
 const validPathname = /^.*\/([a-zA-Z0-9_-]{11})$/
@@ -36,19 +21,19 @@ export class YouTubeURLParser {
                 frameBorder: 0,
                 responsive: true,
                 noCookie: false,
-                width: null,
-                height: null,
+                width: 560,
+                height: 315,
             },
         }) {
 
         this.parsedURL = new URL(url)
 
         if (options["iframe"]) {
-            this.options["iframe"] = {
-                allowFullScreen: options.iframe["allowFullScreen"] || true,
-                frameBorder: options.iframe["frameBorder"] || 0,
-                responsive: options.iframe["responsive"] || true,
-                noCookie: options.iframe["noCookie"] || false,
+            this.options.iframe = {
+                allowFullScreen: options.iframe!["allowFullScreen"] || true,
+                frameBorder: options.iframe!["frameBorder"] || 0,
+                responsive: options.iframe!["responsive"] || true,
+                noCookie: options.iframe!["noCookie"] || false,
             }
         }
 
@@ -108,7 +93,7 @@ export class YouTubeURLParser {
      * Return the embedding URL of a YouTube video.
      * @return {string | null} URL
      */
-    public getEmbeddingURL(): string | undefined {
+    public getEmbeddingURL(): string | null {
         if (!this.isValid()) {
             return null
         }
@@ -130,7 +115,7 @@ export class YouTubeURLParser {
      * Return the start time (second) of a YouTube video.
      * @return {number} second
      */
-    public getStartAtSecound(): number {
+    public getStartAtSecound(): number | null {
         if (!this.isValid()) {
             return null
         }
@@ -158,11 +143,11 @@ export class YouTubeURLParser {
         }
 
         const options = this.options.iframe
-        const domain = options.noCookie ? "www.youtube-nocookie.com" : "www.youtube.com"
+        const domain = options!.noCookie ? "www.youtube-nocookie.com" : "www.youtube.com"
         return `<div class="embed-responsive embed-responsive-16by9">
         <iframe class="embed-responsive-item" type="text/html"
         src="https://${domain}/embed/${this.id}?rel=0&amp;start=${this.getStartAtSecound() || 0}"
-        frameborder="${options.frameBorder}" ${options.allowFullScreen && "allowfullscreen"} />
+        frameborder="${options!.frameBorder}" ${options!.allowFullScreen && "allowfullscreen"} />
         </div>`
     }
 }
