@@ -1,0 +1,31 @@
+{
+    "name": "youtube-url-parser",
+    "version": "0.9.0",
+    "description": "Parser for Youtube URL",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://iktakahiro@github.com/iktakahiro/youtube-url-parser.git"
+    },
+    "author": "Takahiro Ikeuchi @iktakahiro",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/iktakahiro/youtube-url-parser/issues"
+    },
+    "homepage": "https://github.com/iktakahiro/youtube-url-parser#readme",
+    "devDependencies": {
+        "@types/chai": "^4.0.4",
+        "@types/mocha": "^2.2.43",
+        "@types/node": "^8.0.33",
+        "chai": "^4.1.2",
+        "mocha": "^4.0.1",
+        "ts-node": "^3.3.0"
+    },
+    "dependencies": {
+        "@types/qs": "^6.5.0",
+        "qs": "^6.5.1"
+    }
+}
