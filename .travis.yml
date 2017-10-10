@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+   -  "6"
+   -  "7"
+   -  "8"
+install:
+  - npm install -g mocha
+  - npm install -g chai
+  - npm install -g ts-config
+  - npm install
+script:
+- npm test
