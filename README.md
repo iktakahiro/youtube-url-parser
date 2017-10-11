@@ -29,11 +29,13 @@ console.log(parser.getStartAtSecound())
 // -> 130 (2m * 60s + 10s)
 ```
 
-`getIframe()` method returns HTML strings for embedding.
+`getIframe()`:
 
 ```js
 console.log(parser.getIframe())
 ```
+
+`getIframe()` method returns HTML strings containing an iframe element for embedding.
 
 ```html
 <div class="embed-responsive embed-responsive-16by9">
@@ -47,13 +49,15 @@ console.log(parser.getIframe())
 with options:
 
 ```js
-options = {
+const options = {
   allowFullScreen: false,
   frameBorder: 1,
   noCookie: true,
 }
 console.log(parser.getIframe(options))
 ```
+
+When the params is set, the following HTML strings are returned.
 
 ```html
 <div class="embed-responsive embed-responsive-16by9">
