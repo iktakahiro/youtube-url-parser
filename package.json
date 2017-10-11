@@ -1,12 +1,12 @@
 {
     "name": "@iktakahiro/youtube-url-parser",
-    "version": "0.9.3",
+    "version": "0.9.4",
     "description": "Parser for YouTube URL",
     "main": "./lib/index.js",
     "types": "./lib/index.d.ts",
     "scripts": {
         "prepublish": "tsc",
-        "test": "mocha -r ts-node/register -r jsdom-global/register ./src/test/index.ts"
+        "test": "mocha -r ts-node/register -r jsdom-global/register ./src/test/parser.ts"
     },
     "repository": {
         "type": "git",
