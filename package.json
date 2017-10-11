@@ -6,7 +6,7 @@
     "types": "./lib/index.d.ts",
     "scripts": {
         "prepublish": "tsc",
-        "test": "mocha -r ts-node/register -r jsdom-global/register ./src/test/index.ts"
+        "test": "mocha -r ts-node/register -r jsdom-global/register ./src/test/parser.ts"
     },
     "repository": {
         "type": "git",
