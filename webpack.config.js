@@ -7,7 +7,7 @@ const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 module.exports = [{
     cache: true,
     context: path.resolve(__dirname, "src"),
-    entry: "./index.ts",
+    entry: "./parser.ts",
     output: {
         filename: "./lib/index.js"
     },
@@ -24,10 +24,10 @@ module.exports = [{
     },
     plugins: [
         new webpack.LoaderOptionsPlugin({
-            minimize: true,
+            // minimize: true,
             debug: false
         }),
-        new UglifyJSPlugin()
+        // new UglifyJSPlugin()
     ],
     resolve: {
         modules: [

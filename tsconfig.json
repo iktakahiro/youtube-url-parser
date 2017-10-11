@@ -3,9 +3,13 @@
         "module": "commonjs",
         "target": "es5",
         "sourceMap": true,
-        "strictNullChecks": true,
-        "removeComments": true
+        "declaration": true,
+        "moduleResolution": "node",
+        "outDir": "./lib"
     },
+    "files": [
+        "src/index.ts"
+    ],
     "exclude": [
         "node_modules"
     ]

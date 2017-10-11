@@ -1,6 +1,4 @@
-import { StartAt, ParserOptions } from "./../lib/index.d"
 
-import { URL } from "url"
 import { stringify, parse } from "qs"
 
 const validHost = /^(www.youtube.com|youtu.be)$/
@@ -8,8 +6,25 @@ const validPathname = /^.*\/([a-zA-Z0-9_-]{11})$/
 const validId = /^([a-zA-Z0-9_-]{11})$/
 const validStartAt = /^((\d{1,2})h)?((\d{1,2})m)?((\d{1,2})s)?$/
 
+export interface ParserOptions {
+    iframe?: {
+        allowFullScreen?: boolean
+        frameBorder?: number
+        responsive?: boolean
+        noCookie?: boolean,
+        width?: number,
+        height?: number,
+    }
+}
+
+export interface StartAt {
+    hour: number
+    minute: number
+    second: number
+}
+
 export class YouTubeURLParser {
-    protected parsedURL: URL
+    protected parsedURL: any
     protected id: string | null
     protected _startAt: StartAt
     protected search: string
@@ -27,7 +42,10 @@ export class YouTubeURLParser {
             },
         }) {
 
-        this.parsedURL = new URL(url)
+        const parser = document.createElement("a")
+        parser.href = url
+
+        this.parsedURL = parser
 
         if (options["iframe"]) {
             this.options.iframe = {
