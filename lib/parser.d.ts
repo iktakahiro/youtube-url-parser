@@ -1,12 +1,10 @@
-export interface ParserOptions {
-    iframe?: {
-        allowFullScreen?: boolean;
-        frameBorder?: number;
-        responsive?: boolean;
-        noCookie?: boolean;
-        width?: number;
-        height?: number;
-    };
+export interface IframeOptions {
+    allowFullScreen?: boolean;
+    frameBorder?: number;
+    responsive?: boolean;
+    noCookie?: boolean;
+    width?: number;
+    height?: number;
 }
 export interface StartAt {
     hour: number;
@@ -15,12 +13,11 @@ export interface StartAt {
 }
 export declare class YouTubeURLParser {
     url: string;
-    options: ParserOptions;
     protected parsedURL: any;
     protected id: string | null;
     protected _startAt: StartAt;
     protected search: string;
-    constructor(url: string, options?: ParserOptions);
+    constructor(url: string);
     /**
      * Checks whether URL is valid or invalid.
      */
@@ -59,5 +56,5 @@ export declare class YouTubeURLParser {
      * Return the HTML string for embedding.
      * @return {string | null} HTML string
      */
-    getIframe(): string | null;
+    getIframe(options?: IframeOptions): string | null;
 }
