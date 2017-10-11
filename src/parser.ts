@@ -5,15 +5,13 @@ const validPathname = /^.*\/([a-zA-Z0-9_-]{11})$/
 const validId = /^([a-zA-Z0-9_-]{11})$/
 const validStartAt = /^((\d{1,2})h)?((\d{1,2})m)?((\d{1,2})s)?$/
 
-export interface ParserOptions {
-    iframe?: {
-        allowFullScreen?: boolean
-        frameBorder?: number
-        responsive?: boolean
-        noCookie?: boolean,
-        width?: number,
-        height?: number,
-    }
+export interface IframeOptions {
+    allowFullScreen?: boolean
+    frameBorder?: number
+    responsive?: boolean
+    noCookie?: boolean,
+    width?: number,
+    height?: number,
 }
 
 export interface StartAt {
@@ -28,32 +26,11 @@ export class YouTubeURLParser {
     protected _startAt: StartAt
     protected search: string
 
-    constructor(
-        public url: string,
-        public options: ParserOptions = {
-            iframe: {
-                allowFullScreen: true,
-                frameBorder: 0,
-                responsive: true,
-                noCookie: false,
-                width: 560,
-                height: 315,
-            },
-        }) {
+    constructor(public url: string) {
 
         const parser = document.createElement("a")
         parser.href = url
-
         this.parsedURL = parser
-
-        if (options["iframe"]) {
-            this.options.iframe = {
-                allowFullScreen: options.iframe!["allowFullScreen"] || true,
-                frameBorder: options.iframe!["frameBorder"] || 0,
-                responsive: options.iframe!["responsive"] || true,
-                noCookie: options.iframe!["noCookie"] || false,
-            }
-        }
 
         const query = parse(this.parsedURL.search, { ignoreQueryPrefix: true })
         this.id = (validPathname.exec(this.parsedURL.pathname) || [])[1] || null
@@ -62,6 +39,7 @@ export class YouTubeURLParser {
         }
         delete query["watch"]
         this.search = stringify(query, { addQueryPrefix: false })
+
         const startAt = (validStartAt.exec(query["t"]) || []) || null
         if (startAt) {
             this._startAt = {
@@ -155,17 +133,24 @@ export class YouTubeURLParser {
      * Return the HTML string for embedding.
      * @return {string | null} HTML string
      */
-    public getIframe(): string | null {
+    public getIframe(options: IframeOptions = {}): string | null {
         if (!this.isValid()) {
             return null
         }
 
-        const options = this.options.iframe
-        const domain = options!.noCookie ? "www.youtube-nocookie.com" : "www.youtube.com"
+        // set default values
+        options = {
+            allowFullScreen: (options["allowFullScreen"] === undefined) ? true : options.allowFullScreen,
+            frameBorder: (options["frameBorder"] === undefined) ? 0 : options.frameBorder,
+            responsive: (options["responsive"] === undefined) ? true : options.responsive,
+            noCookie: (options["noCookie"] === undefined) ? false : options.noCookie,
+        }
+
+        const domain = options.noCookie ? "www.youtube-nocookie.com" : "www.youtube.com"
         return `<div class="embed-responsive embed-responsive-16by9">
         <iframe class="embed-responsive-item" type="text/html"
         src="https://${domain}/embed/${this.id}?rel=0&amp;start=${this.getStartAtSecound() || 0}"
-        frameborder="${options!.frameBorder}" ${options!.allowFullScreen && "allowfullscreen"} />
+        frameborder="${options.frameBorder}" ${options.allowFullScreen ? "allowfullscreen" : ""} />
         </div>`
     }
 }
