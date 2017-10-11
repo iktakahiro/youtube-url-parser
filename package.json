@@ -1,0 +1,37 @@
+{
+    "name": "@iktakahiro/youtube-url-parser",
+    "version": "0.9.3",
+    "description": "Parser for YouTube URL",
+    "main": "./lib/index.js",
+    "types": "./lib/index.d.ts",
+    "scripts": {
+        "prepublish": "tsc",
+        "test": "mocha -r ts-node/register -r jsdom-global/register ./src/test/index.ts"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://iktakahiro@github.com/iktakahiro/youtube-url-parser.git"
+    },
+    "author": "Takahiro Ikeuchi @iktakahiro",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/iktakahiro/youtube-url-parser/issues"
+    },
+    "homepage": "https://github.com/iktakahiro/youtube-url-parser#readme",
+    "devDependencies": {
+        "@types/chai": "^4.0.4",
+        "@types/mocha": "^2.2.43",
+        "@types/node": "^8.0.33",
+        "@types/qs": "^6.5.0",
+        "chai": "^4.1.2",
+        "jsdom": "^11.3.0",
+        "jsdom-global": "^3.0.2",
+        "mocha": "^4.0.1",
+        "ts-loader": "^2.3.7",
+        "ts-node": "^3.3.0",
+        "typescript": "^2.5.3"
+    },
+    "dependencies": {
+        "qs": "^6.5.1"
+    }
+}
