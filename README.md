@@ -29,7 +29,7 @@ console.log(parser.getStartAtSecound())
 // -> 130 (2m * 60s + 10s)
 ```
 
-- `getIframe()`
+`getIframe()`:
 
 ```js
 console.log(parser.getIframe())
