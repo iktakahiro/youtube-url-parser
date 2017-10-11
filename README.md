@@ -13,7 +13,7 @@ npm install @iktakahiro/youtube-url-parser
 ```typescript
 import { YouTubeURLParser } from "@iktakahiro/youtube-url-parser"
 
-const parser = YouTubeURLParser("https://youtu.be/7lmCu8wz8ro?t=2m10s")
+const parser = new YouTubeURLParser("https://youtu.be/7lmCu8wz8ro?t=2m10s")
 
 console.log(parser.isValid())
 // -> true
