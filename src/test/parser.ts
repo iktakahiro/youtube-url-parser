@@ -1,3 +1,4 @@
+import { IframeOptions } from "./../parser"
 import * as chai from "chai"
 import chaiString = require("chai-string")
 import { YouTubeURLParser } from "../index"
@@ -37,13 +38,31 @@ describe("valid URL 1", () => {
         const result = parser.getStartAtSecound()
         return chai.expect(result).to.equal(4830)
     })
+})
 
-    it("should return HTML", () => {
+describe("iframe test", () => {
+
+    const parser = new YouTubeURLParser("https://youtu.be/7lmCu8wz8ro?t=1h20m30s")
+
+    it("should return default HTML", () => {
         const result = parser.getIframe()
         return chai.expect(result).to.equalIgnoreSpaces(`<div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" type="text/html"
-          src="https://www.youtube.com/embed/7lmCu8wz8ro?rel=0&amp;start=4830"
-          frameborder="0" allowfullscreen /></div>`)
+            <iframe class="embed-responsive-item" type="text/html"
+              src="https://www.youtube.com/embed/7lmCu8wz8ro?rel=0&amp;start=4830"
+              frameborder="0" allowfullscreen /></div>`)
+    })
+
+    const options: IframeOptions = {
+        allowFullScreen: false,
+        frameBorder: 1,
+        noCookie: true,
+    }
+    it("should return customized HTML", () => {
+        const result = parser.getIframe(options)
+        return chai.expect(result).to.equalIgnoreSpaces(`<div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" type="text/html"
+              src="https://www.youtube-nocookie.com/embed/7lmCu8wz8ro?rel=0&amp;start=4830"
+              frameborder="1" /></div>`)
     })
 })
 
