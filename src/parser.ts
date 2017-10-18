@@ -150,7 +150,7 @@ export class YouTubeURLParser {
         return `<div class="embed-responsive embed-responsive-16by9">
         <iframe class="embed-responsive-item" type="text/html"
         src="https://${domain}/embed/${this.id}?rel=0&amp;start=${this.getStartAtSecound() || 0}"
-        frameborder="${options.frameBorder}" ${options.allowFullScreen ? "allowfullscreen" : ""} />
+        frameborder="${options.frameBorder}" ${options.allowFullScreen ? "allowfullscreen" : ""}></iframe>
         </div>`
     }
 }

@@ -49,7 +49,7 @@ describe("iframe test", () => {
         return chai.expect(result).to.equalIgnoreSpaces(`<div class="embed-responsive embed-responsive-16by9">
             <iframe class="embed-responsive-item" type="text/html"
               src="https://www.youtube.com/embed/7lmCu8wz8ro?rel=0&amp;start=4830"
-              frameborder="0" allowfullscreen /></div>`)
+              frameborder="0" allowfullscreen></iframe></div>`)
     })
 
     const options: IframeOptions = {
@@ -62,7 +62,7 @@ describe("iframe test", () => {
         return chai.expect(result).to.equalIgnoreSpaces(`<div class="embed-responsive embed-responsive-16by9">
             <iframe class="embed-responsive-item" type="text/html"
               src="https://www.youtube-nocookie.com/embed/7lmCu8wz8ro?rel=0&amp;start=4830"
-              frameborder="1" /></div>`)
+              frameborder="1"></iframe></div>`)
     })
 })
 
