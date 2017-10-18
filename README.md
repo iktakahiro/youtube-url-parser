@@ -42,7 +42,7 @@ console.log(parser.getIframe())
 <iframe
    class="embed-responsive-item" type="text/html"
    src="https://www.youtube.com/embed/7lmCu8wz8ro?rel=0&amp;start=4830"
-   frameborder="0" allowfullscreen />
+   frameborder="0" allowfullscreen></iframe>
 </div>
 ```
 
@@ -64,7 +64,7 @@ When the params is set, the following HTML strings are returned.
 <iframe
    class="embed-responsive-item" type="text/html"
    src="https://www.youtube-nocookie.com/embed/7lmCu8wz8ro?rel=0&amp;start=4830"
-   frameborder="1" />
+   frameborder="1"></iframe>
 </div>
 ```
 

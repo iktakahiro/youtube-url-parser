@@ -1,4 +1,6 @@
 src/
+test/
 tslint.json
 tsconfig.json
 webpack.config.js
+.travis.yml
