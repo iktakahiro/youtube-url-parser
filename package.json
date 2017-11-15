@@ -6,11 +6,12 @@
     "types": "./lib/index.d.ts",
     "scripts": {
         "prepublish": "tsc",
-        "test": "mocha -r ts-node/register -r jsdom-global/register ./src/test/parser.ts"
+        "test": "mocha -r ts-node/register -r jsdom-global/register ./src/test/parser.ts",
+        "buildForPreCommit": "tsc && git add ./lib/*"
     },
     "pre-commit": [
         "test",
-        "prepublish"
+        "buildForPreCommit"
     ],
     "repository": {
         "type": "git",
