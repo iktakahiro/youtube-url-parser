@@ -5,7 +5,7 @@
     "main": "./lib/index.js",
     "types": "./lib/index.d.ts",
     "scripts": {
-        "prepublish": "tsc",
+        "prepare": "tsc",
         "test": "mocha -r ts-node/register -r jsdom-global/register ./src/test/parser.ts",
         "precommit": "tsc && git add ./lib/*"
     },
