@@ -8,6 +8,10 @@
         "prepublish": "tsc",
         "test": "mocha -r ts-node/register -r jsdom-global/register ./src/test/parser.ts"
     },
+    "pre-commit": [
+        "test",
+        "prepublish"
+    ],
     "repository": {
         "type": "git",
         "url": "git+https://iktakahiro@github.com/iktakahiro/youtube-url-parser.git"
@@ -29,6 +33,7 @@
         "jsdom": "^11.3.0",
         "jsdom-global": "^3.0.2",
         "mocha": "^4.0.1",
+        "pre-commit": "^1.2.2",
         "ts-loader": "^2.3.7",
         "ts-node": "^3.3.0",
         "typescript": "^2.5.3"
