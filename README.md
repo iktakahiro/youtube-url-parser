@@ -25,7 +25,7 @@ console.log(parser.getShortURL())
 // -> "https://youtu.be/7lmCu8wz8ro&t=2m10s"
 console.log(parser.getThumbnailURL())
 // -> "https://img.youtube.com/vi/7lmCu8wz8ro/0.jpg"
-console.log(parser.getStartAtSecound())
+console.log(parser.getStartAtSecond())
 // -> 130 (2m * 60s + 10s)
 ```
 
