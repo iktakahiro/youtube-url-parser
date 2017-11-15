@@ -7,11 +7,11 @@
     "scripts": {
         "prepublish": "tsc",
         "test": "mocha -r ts-node/register -r jsdom-global/register ./src/test/parser.ts",
-        "buildForPreCommit": "tsc && git add ./lib/*"
+        "precommit": "tsc && git add ./lib/*"
     },
     "pre-commit": [
         "test",
-        "buildForPreCommit"
+        "precommit"
     ],
     "repository": {
         "type": "git",
