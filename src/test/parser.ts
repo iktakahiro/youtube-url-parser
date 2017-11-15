@@ -35,7 +35,7 @@ describe("valid URL 1", () => {
     })
 
     it("should return 4830 (1 * 60 * 60 + 20 * 60 + 30)", () => {
-        const result = parser.getStartAtSecound()
+        const result = parser.getStartAtSecond()
         return chai.expect(result).to.equal(4830)
     })
 })
@@ -81,7 +81,7 @@ describe("valid URL 2", () => {
     })
 
     it("should return 25", () => {
-        const result = parser.getStartAtSecound()
+        const result = parser.getStartAtSecond()
         return chai.expect(result).to.equal(25)
     })
 })
@@ -101,7 +101,7 @@ describe("invalid URL 1", () => {
     })
 
     it("should return null", () => {
-        const result = parser.getStartAtSecound()
+        const result = parser.getStartAtSecond()
         return chai.expect(result).to.be.null
     })
 })

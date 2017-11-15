@@ -46,7 +46,7 @@ export declare class YouTubeURLParser {
      * Return the start time (second) of a YouTube video.
      * @return {number} second
      */
-    getStartAtSecound(): number | null;
+    getStartAtSecond(): number | null;
     /**
      * Return the thumbnail URL of a YouTube video.
      * @return {string | null} ULR

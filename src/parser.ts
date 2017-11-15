@@ -111,7 +111,7 @@ export class YouTubeURLParser {
      * Return the start time (second) of a YouTube video.
      * @return {number} second
      */
-    public getStartAtSecound(): number | null {
+    public getStartAtSecond(): number | null {
         if (!this.isValid()) {
             return null
         }
@@ -149,7 +149,7 @@ export class YouTubeURLParser {
         const domain = options.noCookie ? "www.youtube-nocookie.com" : "www.youtube.com"
         return `<div class="embed-responsive embed-responsive-16by9">
         <iframe class="embed-responsive-item" type="text/html"
-        src="https://${domain}/embed/${this.id}?rel=0&amp;start=${this.getStartAtSecound() || 0}"
+        src="https://${domain}/embed/${this.id}?rel=0&amp;start=${this.getStartAtSecond() || 0}"
         frameborder="${options.frameBorder}" ${options.allowFullScreen ? "allowfullscreen" : ""}></iframe>
         </div>`
     }
