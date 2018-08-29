@@ -4,6 +4,7 @@ const validHost = /^(www.youtube.com|youtu.be)$/
 const validPathname = /^.*\/([a-zA-Z0-9_-]{11})$/
 const validId = /^([a-zA-Z0-9_-]{11})$/
 const validStartAt = /^((\d{1,2})h)?((\d{1,2})m)?((\d{1,2})s)?$/
+const URL = URL || require('url')
 
 export interface IframeOptions {
     allowFullScreen?: boolean
@@ -28,7 +29,7 @@ export class YouTubeURLParser {
 
     constructor(public url: string) {
 
-        const parser = document.createElement("a")
+        const parser = new URL('/foo', 'https://example.org/')
         parser.href = url
         this.parsedURL = parser
 
