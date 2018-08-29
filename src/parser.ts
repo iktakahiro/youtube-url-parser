@@ -29,7 +29,7 @@ export class YouTubeURLParser {
 
     constructor(public url: string) {
 
-        const parser = new URL('/foo', 'https://example.org/')
+        const parser = new URL(url)
         parser.href = url
         this.parsedURL = parser
 
